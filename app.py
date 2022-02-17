@@ -1,6 +1,7 @@
 import functools
 import tkinter
 from functions import *
+from PIL import Image, ImageTk
 
 # Create the main window
 theApp = tkinter.Tk()
