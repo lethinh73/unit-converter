@@ -1,35 +1,36 @@
-def float_to_bin(floating):
-    result = []
+# Convert fraction part to binary
+def fraction_to_bin(fraction):
+    result = ""
 
     while True:
 
-        floating *= 2
+        fraction *= 2
 
-        if floating >= 1:
-            result.append(1)
-            floating -= 1
+        if fraction >= 1:
+            result += "1"
+            fraction -= 1
         else:
-            result.append(0)
+            result += "0"
 
-        if result.__len__() == 23 or floating == 0:
+        if result.__len__() >= 23 or fraction == 0:
             break
 
     return result
 
 
+# Convert integer part to binary
 def whole_to_bin(number):
-    reversed_result = []
+    result = ""
 
     while True:
 
-        reversed_result.append(number % 2)
+        result = str(number % 2) + result
         number = int(number / 2)
 
         if number <= 0:
             break
 
-    return reversed_result[::-1]
+    return result
 
 
-print(whole_to_bin(263))
-print(float_to_bin(0.3))
+print(whole_to_bin(1) + "." + fraction_to_bin(0.0000001))
