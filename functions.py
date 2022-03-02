@@ -3,7 +3,6 @@ def fraction_to_bin(fraction):
     result = ""
 
     while True:
-
         fraction *= 2
 
         if fraction >= 1:
@@ -23,7 +22,6 @@ def whole_to_bin(number):
     result = ""
 
     while True:
-
         result = str(number % 2) + result
         number = int(number / 2)
 
@@ -33,4 +31,4 @@ def whole_to_bin(number):
     return result
 
 
-print(whole_to_bin(1) + "." + fraction_to_bin(0.0000001))
+print()
