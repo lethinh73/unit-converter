@@ -1,6 +1,3 @@
-from turtle import bgcolor
-from black import main
-from click import style
 from functions import *
 from tkinter import Label, ttk, Tk
 
