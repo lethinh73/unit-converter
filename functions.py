@@ -19,16 +19,4 @@ def fraction_to_bin(fraction):
 
 # Convert integer part to binary
 def whole_to_bin(number):
-    result = ""
-
-    while True:
-        result = str(number % 2) + result
-        number = int(number / 2)
-
-        if number <= 0:
-            break
-
-    return result
-
-
-print()
+    return bin(number)
