@@ -20,21 +20,59 @@ tabControl = ttk.Notebook(mainApp)
 tabConverter = ttk.Frame(tabControl, height=500, width=500)
 tabCalculator = ttk.Frame(tabControl, height=500, width=500)
 tabControl.add(tabConverter, text="Number Converting")
-tabControl.add(tabCalculator, text="Calculator")
+tabControl.add(tabCalculator, text="Binary Calculator")
 tabControl.grid(columnspan=3, row=1, column=0)
 
 # Tab Converter
 randomColors = ["pink", "yellow", "orange", "red", "cyan",
                 "blue", "violet", "lightblue", "green", "gray"]
-ConverterArea = Frame(tabConverter, width=500, height=500, bg="blue")
-ConverterArea.grid(column=0, row=0, columnspan=10, rowspan=10)
-for i in range(0, 10):
-    for j in range(0, 10):
-        Label(tabConverter, text=f"{i}x{j}",
-              fg="black", bg=randomColors[i]).grid(row=i, column=j)
+ConverterArea = Frame(tabConverter, width=500, height=400, bg="blue")
+ConverterArea.grid(column=0, row=0, columnspan=3, rowspan=10)
 
 # Tab Calculator
-CalculatorArea = Frame(tabCalculator, width=500, height=500, bg="cyan")
+tabCalColor = "cyan"
+CalculatorArea = Frame(tabCalculator, width=500, height=400, bg=tabCalColor)
 CalculatorArea.grid(column=0, row=0, columnspan=3, rowspan=10)
+
+CalTitle = Label(tabCalculator, text="Binary Calculator", bg=tabCalColor)
+CalTitle.grid(column=0, row=0, columnspan=3)
+
+num1Label = Label(tabCalculator, text="Number 1:", bg=tabCalColor)
+num1Label.grid(column=0, row=1)
+num1Entry = Entry(tabCalculator, width=25)
+num1Entry.grid(column=1, row=1, sticky="w")
+num1ClearBtn = Button(tabCalculator, width=15, text="Clear")
+num1ClearBtn.grid(column=2, row=1, sticky="w")
+
+num2Label = Label(tabCalculator, text="Number 2:", bg=tabCalColor)
+num2Label.grid(column=0, row=2)
+num2Entry = Entry(tabCalculator, width=25)
+num2Entry.grid(column=1, row=2, sticky="w")
+num2ClearBtn = Button(tabCalculator, width=15, text="Clear")
+num2ClearBtn.grid(column=2, row=2, sticky="w")
+
+resultLabel = Label(tabCalculator, height=5,
+                    text="Result: ________ ", bg=tabCalColor)
+resultLabel.grid(column=1, row=3, sticky="w")
+
+# Calculation buttons
+addBtn = Button(tabCalculator, width=15, text="ADD")
+addBtn.grid(column=0, row=4)
+subBtn = Button(tabCalculator, width=15, text="SUBTRACT")
+subBtn.grid(column=1, row=4)
+mulBtn = Button(tabCalculator, width=15, text="MULTIPLY")
+mulBtn.grid(column=2, row=4)
+devBtn = Button(tabCalculator, width=15, text="DEVIDE")
+devBtn.grid(column=0, row=5)
+andBtn = Button(tabCalculator, width=15, text="AND")
+andBtn.grid(column=1, row=5)
+orBtn = Button(tabCalculator, width=15, text="OR")
+orBtn.grid(column=2, row=5)
+xorBtn = Button(tabCalculator, width=15, text="XOR")
+xorBtn.grid(column=0, row=6)
+notBtn = Button(tabCalculator, width=15, text="NOT")
+notBtn.grid(column=1, row=6)
+norBtn = Button(tabCalculator, width=15, text="NOR")
+norBtn.grid(column=2, row=6)
 
 mainApp.mainloop()
