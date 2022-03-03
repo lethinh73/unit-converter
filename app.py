@@ -1,5 +1,3 @@
-from tkinter.font import BOLD
-from functions import *
 from tkinter import *
 from tkinter import ttk
 
