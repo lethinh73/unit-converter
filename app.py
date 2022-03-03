@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import font
 from functions import *
 
 mainApp = Tk()
@@ -94,9 +95,9 @@ def norBtnClicked():
 
 
 # App settings
-titleBackColor = "#865439"
-tabCalColor = "#D7B19D"
-tabConColor = "#D7B19D"
+titleBackColor = "#222831"
+tabCalColor = "#EEEEEE"
+tabConColor = "#EEEEEE"
 
 # Set title and size for the window
 mainApp.title("Team Speak")
@@ -107,8 +108,8 @@ mainApp.geometry("+250+250")
 titleArea = Frame(mainApp, width=500, height=100, bg=titleBackColor)
 titleArea.grid(columnspan=3, column=0, row=0)
 appTitle = Label(mainApp, text="Number Converter and Calculator",
-                 fg="black", bg=titleBackColor)
-appTitle.config(font=("Arial", 20))
+                 fg="white", bg=titleBackColor)
+appTitle.config(font=("Arial", 20, font.BOLD))
 appTitle.grid(columnspan=3, row=0, column=0)
 
 # Create 2 tabs
@@ -128,6 +129,7 @@ CalculatorArea = Frame(tabCalculator, width=500, height=400, bg=tabCalColor)
 CalculatorArea.grid(column=0, row=0, columnspan=3, rowspan=10)
 
 CalTitle = Label(tabCalculator, text="Binary Calculator", bg=tabCalColor)
+CalTitle.config(font=("Arial", 15))
 CalTitle.grid(column=0, row=0, columnspan=3)
 
 num1Label = Label(tabCalculator, text="Number 1:", bg=tabCalColor)
@@ -145,7 +147,7 @@ num2ClearBtn = Button(tabCalculator, width=15, text="Clear", command=clearNum2)
 num2ClearBtn.grid(column=2, row=2, sticky="w")
 
 resultLabel = Label(tabCalculator, text="", bg=tabCalColor)
-resultLabel.config(font=("Arial", 20))
+resultLabel.config(font=("Arial", 15, font.BOLD))
 resultLabel.grid(column=0, columnspan=3, row=3)
 
 # Calculation buttons
