@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
+from turtle import width
 from functions import *
 
 mainApp = Tk()
@@ -129,7 +130,31 @@ ConTitle.config(font=("Arial", 15))
 ConTitle.grid(column=0, row=0, columnspan=3)
 
 numALabel = Label(tabConverter, text="Number 1:", bg=tabConColor)
-numALabel.grid(column=0, row=1)
+numALabel.grid(column=0, row=1, sticky="sw")
+
+numAEntry = Entry(tabConverter, width=38)
+numAEntry.config(font=("Arial", 12))
+numAEntry.grid(column=0, row=2, columnspan=2)
+
+options = ["Decimal", "Binary", "Floating Point", "Hexdecimal"]
+clicked = StringVar()
+clicked.set("Decimal")
+optionA = OptionMenu(tabConverter, clicked , *options)
+optionA.config(width=12)
+optionA.grid(column=2, row=2, columnspan=2)
+
+numBLabel = Label(tabConverter, text="Number 2:", bg=tabConColor)
+numBLabel.grid(column=0, row=3, sticky="sw")
+
+numBEntry = Entry(tabConverter, width=38)
+numBEntry.config(font=("Arial", 12))
+numBEntry.grid(column=0, row=4, columnspan=2)
+
+clicked = StringVar()
+clicked.set("Floating Point")
+optionB = OptionMenu(tabConverter, clicked , *options)
+optionB.config(width=12)
+optionB.grid(column=2, row=4, columnspan=2)
 
 # Tab Calculation
 CalculatorArea = Frame(tabCalculator, width=500, height=400, bg=tabCalColor)
@@ -159,24 +184,24 @@ resultLabel.grid(column=0, columnspan=3, row=3)
 
 # Calculation buttons
 addBtn = Button(tabCalculator, width=10, text="ADD", command=addBtnClicked)
-addBtn.grid(column=0, row=4)
+addBtn.grid(column=0, row=4, sticky="e")
 subBtn = Button(tabCalculator, width=10,
                 text="SUBTRACT", command=subBtnClicked)
 subBtn.grid(column=1, row=4)
 mulBtn = Button(tabCalculator, width=10,
                 text="MULTIPLY", command=mulBtnClicked)
-mulBtn.grid(column=2, row=4)
+mulBtn.grid(column=2, row=4, sticky="w")
 devBtn = Button(tabCalculator, width=10, text="DEVIDE", command=devBtnClicked)
-devBtn.grid(column=0, row=5)
+devBtn.grid(column=0, row=5, sticky="e")
 andBtn = Button(tabCalculator, width=10, text="AND", command=andBtnClicked)
 andBtn.grid(column=1, row=5)
 orBtn = Button(tabCalculator, width=10, text="OR", command=orBtnClicked)
-orBtn.grid(column=2, row=5)
+orBtn.grid(column=2, row=5, sticky="w")
 xorBtn = Button(tabCalculator, width=10, text="XOR", command=xorBtnClicked)
-xorBtn.grid(column=0, row=6)
+xorBtn.grid(column=0, row=6, sticky="e")
 notBtn = Button(tabCalculator, width=10, text="NOT", command=notBtnClicked)
 notBtn.grid(column=1, row=6)
 norBtn = Button(tabCalculator, width=10, text="NOR", command=norBtnClicked)
-norBtn.grid(column=2, row=6)
+norBtn.grid(column=2, row=6, sticky="w")
 
 mainApp.mainloop()
