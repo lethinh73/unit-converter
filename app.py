@@ -120,15 +120,22 @@ tabControl.add(tabConverter, text="Conversion")
 tabControl.add(tabCalculator, text="Calculation")
 tabControl.grid(columnspan=3, row=1, column=0)
 
-# Tab Converter
+# Tab Conversion
 ConverterArea = Frame(tabConverter, width=500, height=400, bg=tabConColor)
 ConverterArea.grid(column=0, row=0, columnspan=3, rowspan=10)
 
-# Tab Calculator
+ConTitle = Label(tabConverter, text="Number Converter")
+ConTitle.config(font=("Arial", 15))
+ConTitle.grid(column=0, row=0, columnspan=3)
+
+numALabel = Label(tabConverter, text="Number 1:", bg=tabConColor)
+numALabel.grid(column=0, row=1)
+
+# Tab Calculation
 CalculatorArea = Frame(tabCalculator, width=500, height=400, bg=tabCalColor)
 CalculatorArea.grid(column=0, row=0, columnspan=3, rowspan=10)
 
-CalTitle = Label(tabCalculator, text="Binary Calculator", bg=tabCalColor)
+CalTitle = Label(tabCalculator, text="Binary Calculator")
 CalTitle.config(font=("Arial", 15))
 CalTitle.grid(column=0, row=0, columnspan=3)
 
