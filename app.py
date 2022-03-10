@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
-from turtle import width
 from functions import *
 
 mainApp = Tk()
