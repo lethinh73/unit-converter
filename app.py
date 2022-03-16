@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from functions import *
 
 # Global variables
-options = {10:"Decimal", 2:"Binary", 6:"Hex", 0:"SEM", 32:"Float"}
+options = {10: "Decimal", 2: "Binary", 6: "Hex", 0: "SEM", 32: "Float"}
 optionNum1 = 10
 optionNum2 = 2
 
@@ -12,14 +12,12 @@ class Ui_MainWindow(object):
     ###########################################################################
     ###########################################################################
 
-
     def init(self):
         print("init")
         self.comboNum1.addItems(options.values())
         self.comboNum2.addItems(options.values())
         self.comboResult.addItems(options.values())
         self.comboNum.addItems(options.values())
-        
 
     def btnAddClicked(self):
         try:
@@ -32,13 +30,13 @@ class Ui_MainWindow(object):
         optionNum1 = self.comboNum1.currentIndex()
         print(optionNum1)
 
-
     ###########################################################################
     ###########################################################################
 
     # GENERATED GUI CODES
     ###########################################################################
     ###########################################################################
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 680)
@@ -141,7 +139,8 @@ class Ui_MainWindow(object):
         self.comboNum2 = QtWidgets.QComboBox(self.tabCalculate)
         self.comboNum2.setGeometry(QtCore.QRect(520, 160, 161, 22))
         self.comboNum2.setObjectName("comboNum2")
-        self.btnAdd = QtWidgets.QPushButton(self.tabCalculate, clicked= self.btnAddClicked)
+        self.btnAdd = QtWidgets.QPushButton(
+            self.tabCalculate, clicked=self.btnAddClicked)
         self.btnAdd.setGeometry(QtCore.QRect(120, 310, 150, 30))
         self.btnAdd.setObjectName("btnAdd")
         self.btnSub = QtWidgets.QPushButton(self.tabCalculate)
@@ -206,7 +205,6 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.init()
-        
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -236,7 +234,8 @@ class Ui_MainWindow(object):
             self.tabCalculate), _translate("MainWindow", "Calculator"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(
             self.tabAbout), _translate("MainWindow", "About"))
-        self.label.setText(_translate("MainWindow", "Number Converter and Calculator"))
+        self.label.setText(_translate(
+            "MainWindow", "Number Converter and Calculator"))
     ###########################################################################
     ###########################################################################
 
