@@ -10,8 +10,6 @@ optionNum2 = 2
 class Ui_MainWindow(object):
     # APP EVENTS
     ###########################################################################
-    ###########################################################################
-
     def init(self):
         print("init")
         self.comboNum1.addItems(options.values())
@@ -29,14 +27,10 @@ class Ui_MainWindow(object):
     def comboNum1Changed(self):
         optionNum1 = self.comboNum1.currentIndex()
         print(optionNum1)
-
-    ###########################################################################
     ###########################################################################
 
     # GENERATED GUI CODES
     ###########################################################################
-    ###########################################################################
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 680)
@@ -139,8 +133,7 @@ class Ui_MainWindow(object):
         self.comboNum2 = QtWidgets.QComboBox(self.tabCalculate)
         self.comboNum2.setGeometry(QtCore.QRect(520, 160, 161, 22))
         self.comboNum2.setObjectName("comboNum2")
-        self.btnAdd = QtWidgets.QPushButton(
-            self.tabCalculate, clicked=self.btnAddClicked)
+        self.btnAdd = QtWidgets.QPushButton(self.tabCalculate)
         self.btnAdd.setGeometry(QtCore.QRect(120, 310, 150, 30))
         self.btnAdd.setObjectName("btnAdd")
         self.btnSub = QtWidgets.QPushButton(self.tabCalculate)
@@ -207,6 +200,7 @@ class Ui_MainWindow(object):
 
         # EVENTS
         self.btnConvert.clicked.connect(lambda: print("Yeah!!"))
+        self.btnAdd.clicked.connect(self.btnAddClicked)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -238,7 +232,6 @@ class Ui_MainWindow(object):
             self.tabAbout), _translate("MainWindow", "About"))
         self.label.setText(_translate(
             "MainWindow", "Number Converter and Calculator"))
-    ###########################################################################
     ###########################################################################
 
 
