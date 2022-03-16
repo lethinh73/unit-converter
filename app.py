@@ -200,11 +200,13 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
-
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.init()
+
+        # EVENTS
+        self.btnConvert.clicked.connect(lambda: print("Yeah!!"))
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
