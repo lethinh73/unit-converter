@@ -32,7 +32,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabConvert">
      <attribute name="title">
@@ -49,7 +49,6 @@
       </property>
       <property name="font">
        <font>
-        <family>Tahoma</family>
         <pointsize>20</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -467,7 +466,6 @@
       </property>
       <property name="font">
        <font>
-        <family>Tahoma</family>
         <pointsize>20</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -485,6 +483,26 @@
         <width>161</width>
         <height>22</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>480</y>
+        <width>600</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT only support decimal numbers)</string>
       </property>
      </widget>
     </widget>
