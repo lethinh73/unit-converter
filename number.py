@@ -3,88 +3,110 @@ import struct
 
 class Number:
     # Constructor
-    def __init__(self, num=0.0):
-        self.num = num
+    def __init__(self, num=0):
+        self.num = struct.pack('>f', num)
 
-    # Set number (float or decimal)
-    def set(self, num):
-        self.num = num
+    # Set number (from float or decimal)
+    def set_from_float(self, num):
+        self.num = struct.pack('>f', num)
 
-    # Set number from sem
-    def set_from_sem(self, sem):
-        self.num = self.sem_to_float(sem)
+    # Set number (from SEM string)
+    def set_from_sem(self, num):
+        self.num = struct.pack('>I', int(num, 2))
 
-    # Set number from binary
-    def set_from_bin(self, bin):
-        self.num = int(bin, 2)
+    # Set number (from hex string)
+    def set_from_hex(self, num):
+        self.num = struct.pack('>I', int(num, 16))
 
-    # Set number from hex
-    def set_from_hex(self, hex):
-        self.num = float(hex, 16)
+    # Set number (from binary string)
+    def set_from_binary(self, num):
+        if('-' in num):
+            num = num.replace('-', '')
+            sign = -1
 
-    # Add operation
-    def __add__(self, other):
-        return Number(self.num + other.num)
+        if('.' in num):
+            dec_bin = num.split('.')[0]
+            fl_bin = num.split('.')[1]
 
-    # Subtract operation
-    def __sub__(self, other):
-        return Number(self.num - other.num)
+            print('dec_bin:', dec_bin)
+            print('fl_bin:', fl_bin)
 
-    # Multiply operation
-    def __mul__(self, other):
-        return Number(self.num * other.num)
+            dec = 0
+            fl = 0
 
-    # Divide operation
-    def __truediv__(self, other):
-        return Number(self.num / other.num)
+            count = len(dec_bin) - 1
 
-    # Or operation
-    def __or__(self, other):
-        return Number(int(self.num) | int(other.num))
+            for i in range(len(dec_bin)):
+                dec += int(dec_bin[i]) * (2 ** count)
+                count -= 1
 
-    # And operation
-    def __and__(self, other):
-        return Number(int(self.num) & int(other.num))
+            count = -1
 
-    # Xor operation
-    def __xor__(self, other):
-        return Number(int(self.num) ^ int(other.num))
+            for i in range(len(fl_bin)):
+                fl += int(fl_bin[i]) * (2 ** count)
+                count -= 1
 
-    # Shift left operation
-    def __lshift__(self, other):
-        return Number(int(self.num) << int(other.num))
+            if(sign == -1):
+                self.num = struct.pack('>f', -(dec + fl))
+            else:
+                self.num = struct.pack('>f', dec + fl)
+        else:
+            dec = 0
 
-    # Shift right operation
-    def __rshift__(self, other):
-        return Number(int(self.num) >> int(other.num))
+            count = len(num) - 1
 
-    # Return string representation of number
-    def __str__(self):
-        return str(self.num)
+            for i in range(len(num)):
+                dec += int(num[i]) * (2 ** count)
+                count -= 1
 
-    # Return number
-    def value(self):
-        return self.num
+            if(sign == -1):
+                self.num = struct.pack('>f', -dec)
+            else:
+                self.num = struct.pack('>f', dec)
 
-    # Return sem value
-    def sem(self):
-        return self.float_to_sem(self.num)
+    # Return SEM value
+    def get_sem(self):
+        return bin(struct.unpack('>I', self.num)[0]).replace('0b', '').zfill(32)
 
-    # Return binary value
-    def bin(self):
-        return bin(int(self.num))
+    # Return float value
+    def get_float(self):
+        return struct.unpack('>f', self.num)[0]
 
     # Return hex value
-    def hex(self):
-        return hex(int(self.num))
+    def get_hex(self):
+        return hex(struct.unpack('>I', self.num)[0]).replace('0x', '').zfill(8)
 
-    # Float to SEM
-    def float_to_sem(self, float):
-        memory_format = struct.pack('!f', float)
-        uInt_format = struct.unpack('!I', memory_format)[0]
-        return bin(uInt_format)[2:].zfill(32)
+    # Return binary value
+    def get_binary(self):
+        num = struct.unpack('>f', self.num)[0]
 
-    # SEM to float
-    def sem_to_float(self, sem):
-        uInt_format = struct.pack('!I', int(sem, 2))
-        return struct.unpack('!f', uInt_format)[0]
+        if(num < 0):
+            sign = -1
+            num = abs(num)
+        else:
+            sign = 1
+
+        if('.' in str(num)):
+            dec = int(str(num).split('.')[0])
+            fl = float('0.' + str(num).split('.')[1])
+
+            dec_bin = bin(dec).replace('0b', '')
+            fl_bin = ''
+
+            while(len(fl_bin) < 32 and fl != 1 and fl != 0):
+                fl *= 2
+                if(fl > 1):
+                    fl_bin += '1'
+                    fl -= 1
+                else:
+                    fl_bin += '0'
+
+            if(fl == 0):
+                fl_bin += '0'
+
+            if(sign == -1):
+                return '-' + dec_bin + '.' + fl_bin
+            return dec_bin + '.' + fl_bin
+
+        else:
+            return bin(num)
