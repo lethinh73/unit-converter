@@ -6,19 +6,19 @@ class Number:
     def __init__(self, num=0.0):
         self.num = num
 
-    # Set number
+    # Set number (float or decimal)
     def set(self, num):
         self.num = num
 
-    # Set from sem
+    # Set number from sem
     def set_from_sem(self, sem):
         self.num = self.sem_to_float(sem)
 
-    # Set from binary
+    # Set number from binary
     def set_from_bin(self, bin):
         self.num = int(bin, 2)
 
-    # Set from hex
+    # Set number from hex
     def set_from_hex(self, hex):
         self.num = float(hex, 16)
 
@@ -69,6 +69,14 @@ class Number:
     # Return sem value
     def sem(self):
         return self.float_to_sem(self.num)
+
+    # Return binary value
+    def bin(self):
+        return bin(int(self.num))
+
+    # Return hex value
+    def hex(self):
+        return hex(int(self.num))
 
     # Float to SEM
     def float_to_sem(self, float):
