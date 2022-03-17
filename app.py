@@ -1,14 +1,23 @@
+from ast import Num
 from PyQt5 import QtCore, QtGui, QtWidgets
-from functions import *
+from number import Number
 
 # Global variables
-options = {10: "Decimal", 2: "Binary", 6: "Hex", 0: "SEM", 32: "Float"}
-optionNum1 = 10
-optionNum2 = 2
+options = {
+    0: "Decimal",
+    1: "Binary",
+    2: "Hex",
+    3: "SEM",
+    4: "Float"
+}
+optionNum1 = 0
+optionNum2 = 0
+num1 = Number()
+num2 = Number()
 
 
 class Ui_MainWindow(object):
-    # APP EVENTS
+    # APP EVENT FUNCTIONS
     ###########################################################################
     def init(self):
         print("init")
@@ -19,14 +28,13 @@ class Ui_MainWindow(object):
 
     def btnAddClicked(self):
         try:
-            result = add_binary(self.txtNum1.text(), self.txtNum2.text())
-            self.txtResult.setText(result)
+            self.txtResult.setText("WORKING!!!")
         except:
             self.txtResult.setText("Error! Please check your input!")
 
     def comboNum1Changed(self):
         optionNum1 = self.comboNum1.currentIndex()
-        print(optionNum1)
+        print(options[optionNum1])
     ###########################################################################
 
     # GENERATED GUI CODES
@@ -196,11 +204,14 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.init()
 
-        # EVENTS
+        # APP EVENT LISTENERS
+        ###########################################################################
+        self.init()
         self.btnConvert.clicked.connect(lambda: print("Yeah!!"))
         self.btnAdd.clicked.connect(self.btnAddClicked)
+        self.comboNum1.currentIndexChanged.connect(self.comboNum1Changed)
+        ###########################################################################
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
