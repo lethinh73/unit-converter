@@ -1,4 +1,5 @@
 from ast import Num
+from glob import glob
 from PyQt5 import QtCore, QtGui, QtWidgets
 from number import Number
 
@@ -10,31 +11,42 @@ options = {
     3: "SEM",
     4: "Float"
 }
+
 optionNum1 = 0
 optionNum2 = 0
+optionResult = 0
 num1 = Number()
 num2 = Number()
+result = Number()
 
 
 class Ui_MainWindow(object):
     # APP EVENT FUNCTIONS
     ###########################################################################
+    # App initialization
+
     def init(self):
-        print("init")
+        print("App initializing...")
         self.comboNum1.addItems(options.values())
         self.comboNum2.addItems(options.values())
         self.comboResult.addItems(options.values())
         self.comboNum.addItems(options.values())
+        print("App initialized!")
 
-    def btnAddClicked(self):
-        try:
-            self.txtResult.setText("WORKING!!!")
-        except:
-            self.txtResult.setText("Error! Please check your input!")
-
+    # ComboBox "Number 1" changed
     def comboNum1Changed(self):
+        global optionNum1
         optionNum1 = self.comboNum1.currentIndex()
-        print(options[optionNum1])
+
+    # ComboBox "Number 2" changed
+    def comboNum2Changed(self):
+        global optionNum2
+        optionNum2 = self.comboNum2.currentIndex()
+
+    # ComboBox "Result" changed
+    def comboResultChanged(self):
+        global optionResult
+        optionResult = self.comboResult.currentIndex()
     ###########################################################################
 
     # GENERATED GUI CODES
@@ -69,7 +81,6 @@ class Ui_MainWindow(object):
         self.txtNum.setObjectName("txtNum")
         self.comboNum = QtWidgets.QComboBox(self.tabConvert)
         self.comboNum.setGeometry(QtCore.QRect(490, 100, 161, 22))
-        self.comboNum.setCurrentText("")
         self.comboNum.setObjectName("comboNum")
         self.txtDecimal = QtWidgets.QLineEdit(self.tabConvert)
         self.txtDecimal.setEnabled(False)
@@ -189,6 +200,14 @@ class Ui_MainWindow(object):
         self.comboResult = QtWidgets.QComboBox(self.tabCalculate)
         self.comboResult.setGeometry(QtCore.QRect(520, 230, 161, 22))
         self.comboResult.setObjectName("comboResult")
+        self.label_11 = QtWidgets.QLabel(self.tabCalculate)
+        self.label_11.setGeometry(QtCore.QRect(100, 480, 600, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName("label_11")
         self.tabWidget.addTab(self.tabCalculate, "")
         self.tabAbout = QtWidgets.QWidget()
         self.tabAbout.setObjectName("tabAbout")
@@ -201,6 +220,7 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -211,6 +231,8 @@ class Ui_MainWindow(object):
         self.btnConvert.clicked.connect(lambda: print("Yeah!!"))
         self.btnAdd.clicked.connect(self.btnAddClicked)
         self.comboNum1.currentIndexChanged.connect(self.comboNum1Changed)
+        self.comboNum2.currentIndexChanged.connect(self.comboNum2Changed)
+        self.comboResult.currentIndexChanged.connect(self.comboResultChanged)
         ###########################################################################
 
     def retranslateUi(self, MainWindow):
@@ -237,6 +259,8 @@ class Ui_MainWindow(object):
         self.btnNot.setText(_translate("MainWindow", "NOT"))
         self.label_4.setText(_translate("MainWindow", "Result:"))
         self.label_5.setText(_translate("MainWindow", "Calculator"))
+        self.label_11.setText(_translate(
+            "MainWindow", "(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT only support decimal numbers)"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(
             self.tabCalculate), _translate("MainWindow", "Calculator"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(

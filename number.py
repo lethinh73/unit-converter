@@ -3,8 +3,24 @@ import struct
 
 class Number:
     # Constructor
-    def __init__(self, num = 0):
+    def __init__(self, num=0.0):
         self.num = num
+
+    # Set number
+    def set(self, num):
+        self.num = num
+
+    # Set from sem
+    def set_from_sem(self, sem):
+        self.num = self.sem_to_float(sem)
+
+    # Set from binary
+    def set_from_bin(self, bin):
+        self.num = int(bin, 2)
+
+    # Set from hex
+    def set_from_hex(self, hex):
+        self.num = float(hex, 16)
 
     # Add operation
     def __add__(self, other):
@@ -41,7 +57,7 @@ class Number:
     # Shift right operation
     def __rshift__(self, other):
         return Number(int(self.num) >> int(other.num))
-    
+
     # Return string representation of number
     def __str__(self):
         return str(self.num)

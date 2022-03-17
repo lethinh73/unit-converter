@@ -2,7 +2,7 @@ from number import Number
 
 a = Number(15.5)
 b = Number(25.78)
-c = a & b
+c = a << b
 
 # Print value of a, b, c
 print(a.value())
