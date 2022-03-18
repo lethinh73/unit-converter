@@ -79,6 +79,46 @@ class Number:
         else:
             return bin(num).replace('0b', '')
 
+    # ADD operation
+    def __add__(self, other):
+        return Number(self.get_float() + other.get_float())
+
+    # SUB operation
+    def __sub__(self, other):
+        return Number(self.get_float() - other.get_float())
+
+    # MUL operation
+    def __mul__(self, other):
+        return Number(self.get_float() * other.get_float())
+
+    # DIV operation
+    def __truediv__(self, other):
+        return Number(self.get_float() / other.get_float())
+
+    # AND operation
+    def __and__(self, other):
+        return Number(int(self.get_float()) & int(other.get_float()))
+
+    # OR operation
+    def __or__(self, other):
+        return Number(int(self.get_float()) | int(other.get_float()))
+
+    # XOR operation
+    def __xor__(self, other):
+        return Number(int(self.get_float()) ^ int(other.get_float()))
+
+    # NOT operation
+    def __invert__(self):
+        return Number(~int(self.get_float()))
+
+    # LSHIFT operation
+    def __lshift__(self, other):
+        return Number(int(self.get_float()) << int(other.get_float()))
+
+    # RSHIFT operation
+    def __rshift__(self, other):
+        return Number(int(self.get_float()) >> int(other.get_float()))
+
 
 # Testing Number class
 if __name__ == '__main__':
