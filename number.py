@@ -95,18 +95,26 @@ class Number:
 
             while(len(fl_bin) < 32 and fl != 1 and fl != 0):
                 fl *= 2
-                if(fl > 1):
+                if(fl >= 1):
                     fl_bin += '1'
                     fl -= 1
                 else:
                     fl_bin += '0'
 
-            if(fl == 0):
-                fl_bin += '0'
-
-            if(sign == -1):
-                return '-' + dec_bin + '.' + fl_bin
-            return dec_bin + '.' + fl_bin
-
+            if(fl_bin == ''):
+                return dec_bin
+            else:
+                if(sign == -1):
+                    return '-' + dec_bin + '.' + fl_bin
+                return dec_bin + '.' + fl_bin
         else:
             return bin(num)
+
+
+# Testing Number class
+if __name__ == '__main__':
+    n = Number(-3.9)
+    print('SEM:', n.get_sem())
+    print('Float:', n.get_float())
+    print('Hex:', n.get_hex())
+    print('Binary:', n.get_binary())
