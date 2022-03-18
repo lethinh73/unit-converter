@@ -23,6 +23,8 @@ class Number:
         if('-' in num):
             num = num.replace('-', '')
             sign = -1
+        else:
+            sign = 1
 
         if('.' in num):
             dec_bin = num.split('.')[0]
@@ -113,7 +115,8 @@ class Number:
 
 # Testing Number class
 if __name__ == '__main__':
-    n = Number(-3.9)
+    n = Number()
+    n.set_from_binary('1010101101')
     print('SEM:', n.get_sem())
     print('Float:', n.get_float())
     print('Hex:', n.get_hex())

@@ -9,12 +9,13 @@ options = {
     1: 'Binary',
     2: 'Hex',
     3: 'SEM',
-    4: 'Float',
 }
 
+optionNum = 0
 optionNum1 = 0
 optionNum2 = 0
 optionResult = 0
+num = Number()
 num1 = Number()
 num2 = Number()
 result = Number()
@@ -24,7 +25,6 @@ class Ui_MainWindow(object):
     # APP EVENT FUNCTIONS
     ###########################################################################
     # App initialization
-
     def init(self):
         print('App initializing...')
         self.comboNum1.addItems(options.values())
@@ -32,6 +32,49 @@ class Ui_MainWindow(object):
         self.comboResult.addItems(options.values())
         self.comboNum.addItems(options.values())
         print('App initialized!')
+
+    # ComboBox 'Number' changed
+    def comboNumChanged(self):
+        global optionNum
+        optionNum = self.comboNum.currentIndex()
+
+    # Button 'Convert' clicked
+    def btnConvertClicked(self):
+        global num
+        try:
+            if optionNum == 0:
+                print("Decimal chosen")
+                num.set_from_float(float(self.txtNum.text()))
+                self.txtBinary.setText(str(num.get_binary()))
+                self.txtHex.setText(str(num.get_hex()))
+                self.txtSem.setText(str(num.get_sem()))
+                self.txtDecimal.setText(str(num.get_float()))
+            elif optionNum == 1:
+                print("Binary chosen")
+                num.set_from_binary(self.txtNum.text())
+                self.txtBinary.setText(str(num.get_binary()))
+                self.txtHex.setText(str(num.get_hex()))
+                self.txtSem.setText(str(num.get_sem()))
+                self.txtDecimal.setText(str(num.get_float()))
+            elif optionNum == 2:
+                print("Hex chosen")
+                num.set_from_hex(self.txtNum.text())
+                self.txtBinary.setText(str(num.get_binary()))
+                self.txtHex.setText(str(num.get_hex()))
+                self.txtSem.setText(str(num.get_sem()))
+                self.txtDecimal.setText(str(num.get_float()))
+            elif optionNum == 3:
+                print("SEM chosen")
+                num.set_from_sem(self.txtNum.text())
+                self.txtBinary.setText(str(num.get_binary()))
+                self.txtHex.setText(str(num.get_hex()))
+                self.txtSem.setText(str(num.get_sem()))
+                self.txtDecimal.setText(str(num.get_float()))
+        except:
+            self.txtDecimal.setText('Error! Please enter a valid number.')
+            self.txtBinary.setText('Error! Please enter a valid number.')
+            self.txtHex.setText('Error! Please enter a valid number.')
+            self.txtSem.setText('Error! Please enter a valid number.')
 
     # ComboBox 'Number 1' changed
     def comboNum1Changed(self):
@@ -228,6 +271,10 @@ class Ui_MainWindow(object):
         # APP EVENT LISTENERS
         ###########################################################################
         self.init()
+
+        self.btnConvert.clicked.connect(self.btnConvertClicked)
+        self.comboNum.currentIndexChanged.connect(self.comboNumChanged)
+
         self.comboNum1.currentIndexChanged.connect(self.comboNum1Changed)
         self.comboNum2.currentIndexChanged.connect(self.comboNum2Changed)
         self.comboResult.currentIndexChanged.connect(self.comboResultChanged)
