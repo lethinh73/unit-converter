@@ -82,17 +82,28 @@ class Ui_MainWindow(object):
         global optionNum1
         optionNum1 = self.comboNum1.currentIndex()
 
+        '''
+        if(self.txtNum1.text() != ''):
+            self.inputNum1()
+            self.convertNum1()
+        '''
+
     # ComboBox 'Number 2' changed
     def comboNum2Changed(self):
         global optionNum2
         optionNum2 = self.comboNum2.currentIndex()
+        '''
+        if(self.txtNum2.text() != ''):
+            self.inputNum2()
+            self.convertNum2()
+        '''
 
     # ComboBox 'Result' changed
     def comboResultChanged(self):
         global optionResult
         optionResult = self.comboResult.currentIndex()
 
-        if(self.txtResult != ''):
+        if(self.txtResult.text() != ''):
             self.outputResult()
 
     # Input number 1
@@ -130,6 +141,32 @@ class Ui_MainWindow(object):
             self.txtResult.setText(str(result.get_hex()))
         elif optionResult == 3:
             self.txtResult.setText(str(result.get_sem()))
+
+    '''
+    # Convert Number 1
+    def convertNum1(self):
+        global num1, optionNum1
+        if optionNum1 == 0:
+            self.txtNum1.setText(str(num1.get_float()))
+        elif optionNum1 == 1:
+            self.txtNum1.setText(str(num1.get_binary()))
+        elif optionNum1 == 2:
+            self.txtNum1.setText(str(num1.get_hex()))
+        elif optionNum1 == 3:
+            self.txtNum1.setText(str(num1.get_sem()))
+
+    # Convert Number 2
+    def convertNum2(self):
+        global num2, optionNum2
+        if optionNum2 == 0:
+            self.txtNum2.setText(str(num2.get_float()))
+        elif optionNum2 == 1:
+            self.txtNum2.setText(str(num2.get_binary()))
+        elif optionNum2 == 2:
+            self.txtNum2.setText(str(num2.get_hex()))
+        elif optionNum2 == 3:
+            self.txtNum2.setText(str(num2.get_sem()))
+    '''
 
     # Button 'Add' clicked
     def btnAddClicked(self):
@@ -181,6 +218,105 @@ class Ui_MainWindow(object):
             self.inputNum2()
 
             result = num1 / num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'AND' clicked
+    def btnAndClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = num1 & num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'OR' clicked
+    def btnOrClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = num1 | num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'XOR' clicked
+    def btnXorClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = num1 ^ num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'NOT' clicked
+    def btnNotClicked(self):
+        global result, num1
+        try:
+            self.inputNum1()
+
+            result = ~num1
+
+            self.txtNum2.setText('')
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'NOR' clicked
+    def btnNorClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = ~(num1 | num2)
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'Left Shift' clicked
+    def btnLeftShiftClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = num1 << num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'Right Shift' clicked
+    def btnRightShiftClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = num1 >> num2
 
             self.outputResult()
         except Exception as e:
@@ -389,6 +525,11 @@ class Ui_MainWindow(object):
         self.btnSub.clicked.connect(self.btnSubClicked)
         self.btnMul.clicked.connect(self.btnMulClicked)
         self.btnDiv.clicked.connect(self.btnDivClicked)
+        self.btnAnd.clicked.connect(self.btnAndClicked)
+        self.btnOr.clicked.connect(self.btnOrClicked)
+        self.btnXor.clicked.connect(self.btnXorClicked)
+        self.btnNor.clicked.connect(self.btnNorClicked)
+        self.btnNot.clicked.connect(self.btnNotClicked)
         ###########################################################################
 
     def retranslateUi(self, MainWindow):
