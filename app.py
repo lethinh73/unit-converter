@@ -1,5 +1,3 @@
-from ast import Num
-from glob import glob
 from PyQt5 import QtCore, QtGui, QtWidgets
 from number import Number
 
