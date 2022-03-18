@@ -70,11 +70,12 @@ class Ui_MainWindow(object):
                 self.txtHex.setText(str(num.get_hex()))
                 self.txtSem.setText(str(num.get_sem()))
                 self.txtDecimal.setText(str(num.get_float()))
-        except:
+        except Exception as e:
             self.txtDecimal.setText('Error! Please enter a valid number.')
             self.txtBinary.setText('Error! Please enter a valid number.')
             self.txtHex.setText('Error! Please enter a valid number.')
             self.txtSem.setText('Error! Please enter a valid number.')
+            print(e)
 
     # ComboBox 'Number 1' changed
     def comboNum1Changed(self):
@@ -271,7 +272,6 @@ class Ui_MainWindow(object):
         # APP EVENT LISTENERS
         ###########################################################################
         self.init()
-
         self.btnConvert.clicked.connect(self.btnConvertClicked)
         self.comboNum.currentIndexChanged.connect(self.comboNumChanged)
 

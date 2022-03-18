@@ -20,51 +20,17 @@ class Number:
 
     # Set number (from binary string)
     def set_from_binary(self, num):
-        if('-' in num):
-            num = num.replace('-', '')
-            sign = -1
-        else:
-            sign = 1
-
         if('.' in num):
-            dec_bin = num.split('.')[0]
-            fl_bin = num.split('.')[1]
+            dec_str = num.split('.')[0]
+            fl_str = num.split('.')[1]
 
-            print('dec_bin:', dec_bin)
-            print('fl_bin:', fl_bin)
-
-            dec = 0
-            fl = 0
-
-            count = len(dec_bin) - 1
-
-            for i in range(len(dec_bin)):
-                dec += int(dec_bin[i]) * (2 ** count)
-                count -= 1
-
-            count = -1
-
-            for i in range(len(fl_bin)):
-                fl += int(fl_bin[i]) * (2 ** count)
-                count -= 1
-
-            if(sign == -1):
-                self.num = struct.pack('>f', -(dec + fl))
-            else:
-                self.num = struct.pack('>f', dec + fl)
+            print('dec_str:', dec_str)
+            print('fl_str:', fl_str)
         else:
-            dec = 0
-
-            count = len(num) - 1
-
-            for i in range(len(num)):
-                dec += int(num[i]) * (2 ** count)
-                count -= 1
-
-            if(sign == -1):
-                self.num = struct.pack('>f', -dec)
+            if(num[0] == '-'):
+                self.num = struct.pack('>f', -int(num[1:], 2))
             else:
-                self.num = struct.pack('>f', dec)
+                self.num = struct.pack('>f', int(num, 2))
 
     # Return SEM value
     def get_sem(self):
@@ -82,42 +48,41 @@ class Number:
     def get_binary(self):
         num = struct.unpack('>f', self.num)[0]
 
-        if(num < 0):
-            sign = -1
-            num = abs(num)
-        else:
-            sign = 1
+        if(abs(num) < 0.00001):
+            return '0'
 
         if('.' in str(num)):
             dec = int(str(num).split('.')[0])
             fl = float('0.' + str(num).split('.')[1])
+            fl_str = ''
 
-            dec_bin = bin(dec).replace('0b', '')
-            fl_bin = ''
+            if(abs(num) < 1):
+                if(num < 0):
+                    dec_str = '-0'
+                else:
+                    dec_str = '0'
+            else:
+                dec_str = bin(dec).replace('0b', '')
 
-            while(len(fl_bin) < 32 and fl != 1 and fl != 0):
+            while(len(fl_str) < 32 and fl != 1 and fl != 0):
                 fl *= 2
                 if(fl >= 1):
-                    fl_bin += '1'
+                    fl_str += '1'
                     fl -= 1
                 else:
-                    fl_bin += '0'
+                    fl_str += '0'
 
-            if(fl_bin == ''):
-                return dec_bin
+            if(fl_str == ''):
+                return dec_str
             else:
-                if(sign == -1):
-                    return '-' + dec_bin + '.' + fl_bin
-                return dec_bin + '.' + fl_bin
+                return dec_str + '.' + fl_str
         else:
-            return bin(num)
+            return bin(num).replace('0b', '')
 
 
 # Testing Number class
 if __name__ == '__main__':
     n = Number()
-    n.set_from_binary('1010101101')
-    print('SEM:', n.get_sem())
-    print('Float:', n.get_float())
-    print('Hex:', n.get_hex())
-    print('Binary:', n.get_binary())
+    n.set_from_float(0.0001)
+    print('n: ', n.get_float())
+    print('binary: ', n.get_binary())
