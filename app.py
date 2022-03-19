@@ -44,28 +44,24 @@ class Ui_MainWindow(object):
 
         try:
             if optionNum == 0:
-                print('Decimal chosen')
                 num.set_from_float(float(self.txtNum.text()))
                 self.txtBinary.setText(str(num.get_binary()))
                 self.txtHex.setText(str(num.get_hex()))
                 self.txtSem.setText(str(num.get_sem()))
                 self.txtDecimal.setText(str(num.get_float()))
             elif optionNum == 1:
-                print('Binary chosen')
                 num.set_from_binary(self.txtNum.text())
                 self.txtBinary.setText(str(num.get_binary()))
                 self.txtHex.setText(str(num.get_hex()))
                 self.txtSem.setText(str(num.get_sem()))
                 self.txtDecimal.setText(str(num.get_float()))
             elif optionNum == 2:
-                print('Hex chosen')
                 num.set_from_hex(self.txtNum.text())
                 self.txtBinary.setText(str(num.get_binary()))
                 self.txtHex.setText(str(num.get_hex()))
                 self.txtSem.setText(str(num.get_sem()))
                 self.txtDecimal.setText(str(num.get_float()))
             elif optionNum == 3:
-                print('SEM chosen')
                 num.set_from_sem(self.txtNum.text())
                 self.txtBinary.setText(str(num.get_binary()))
                 self.txtHex.setText(str(num.get_hex()))
@@ -80,21 +76,10 @@ class Ui_MainWindow(object):
         global optionNum1
         optionNum1 = self.comboNum1.currentIndex()
 
-        '''
-        if(self.txtNum1.text() != ''):
-            self.inputNum1()
-            self.convertNum1()
-        '''
-
     # ComboBox 'Number 2' changed
     def comboNum2Changed(self):
         global optionNum2
         optionNum2 = self.comboNum2.currentIndex()
-        '''
-        if(self.txtNum2.text() != ''):
-            self.inputNum2()
-            self.convertNum2()
-        '''
 
     # ComboBox 'Result' changed
     def comboResultChanged(self):
@@ -139,32 +124,6 @@ class Ui_MainWindow(object):
             self.txtResult.setText(str(result.get_hex()))
         elif optionResult == 3:
             self.txtResult.setText(str(result.get_sem()))
-
-    '''
-    # Convert Number 1
-    def convertNum1(self):
-        global num1, optionNum1
-        if optionNum1 == 0:
-            self.txtNum1.setText(str(num1.get_float()))
-        elif optionNum1 == 1:
-            self.txtNum1.setText(str(num1.get_binary()))
-        elif optionNum1 == 2:
-            self.txtNum1.setText(str(num1.get_hex()))
-        elif optionNum1 == 3:
-            self.txtNum1.setText(str(num1.get_sem()))
-
-    # Convert Number 2
-    def convertNum2(self):
-        global num2, optionNum2
-        if optionNum2 == 0:
-            self.txtNum2.setText(str(num2.get_float()))
-        elif optionNum2 == 1:
-            self.txtNum2.setText(str(num2.get_binary()))
-        elif optionNum2 == 2:
-            self.txtNum2.setText(str(num2.get_hex()))
-        elif optionNum2 == 3:
-            self.txtNum2.setText(str(num2.get_sem()))
-    '''
 
     # Button 'Add' clicked
     def btnAddClicked(self):

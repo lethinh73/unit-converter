@@ -24,15 +24,19 @@ class Number:
             dec_str = num.split('.')[0]
             fl_str = num.split('.')[1]
 
-            print('dec_str:', dec_str)
-            print('fl_str:', fl_str)
+            dec = int(dec_str, 2)
+            fl = 0
+
+            for i in range(len(fl_str)):
+                fl += int(fl_str[i]) * 2 ** (-i - 1)
+
+            self.num = struct.pack('>f', dec + fl)
         else:
             if(num[0] == '-'):
                 self.num = struct.pack('>f', -int(num[1:], 2))
             else:
                 self.num = struct.pack('>f', int(num, 2))
 
-    # Return SEM value
     def get_sem(self):
         return bin(struct.unpack('>I', self.num)[0]).replace('0b', '').zfill(32)
 
@@ -75,7 +79,7 @@ class Number:
             if(fl_str == ''):
                 return dec_str
             else:
-                return dec_str + '.' + fl_str
+                return (dec_str + '.' + fl_str).rstrip('0')
         else:
             return bin(num).replace('0b', '')
 
