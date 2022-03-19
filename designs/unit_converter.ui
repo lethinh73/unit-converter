@@ -34,7 +34,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="currentIndex">
@@ -61,7 +61,10 @@
        </font>
       </property>
       <property name="text">
-       <string>Converter</string>
+       <string>CONVERTER</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="txtNum">
@@ -87,6 +90,11 @@
         <width>161</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
       </property>
       <property name="currentText">
        <string/>
@@ -246,6 +254,19 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>70</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Number:</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabCalculate">
      <attribute name="title">
@@ -290,6 +311,11 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Number 1:</string>
       </property>
@@ -316,6 +342,11 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
       <property name="currentText">
        <string/>
       </property>
@@ -329,12 +360,17 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
      </widget>
      <widget class="QPushButton" name="btnAdd">
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>310</y>
+        <y>280</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -347,7 +383,7 @@
       <property name="geometry">
        <rect>
         <x>325</x>
-        <y>310</y>
+        <y>280</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -360,7 +396,7 @@
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>310</y>
+        <y>280</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -373,7 +409,7 @@
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>360</y>
+        <y>330</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -386,7 +422,7 @@
       <property name="geometry">
        <rect>
         <x>325</x>
-        <y>360</y>
+        <y>330</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -399,7 +435,7 @@
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>360</y>
+        <y>330</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -412,7 +448,7 @@
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>410</y>
+        <y>380</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -425,7 +461,7 @@
       <property name="geometry">
        <rect>
         <x>325</x>
-        <y>410</y>
+        <y>380</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -438,7 +474,7 @@
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>410</y>
+        <y>380</y>
         <width>150</width>
         <height>30</height>
        </rect>
@@ -492,7 +528,10 @@
        </font>
       </property>
       <property name="text">
-       <string>Calculator</string>
+       <string>CALCULATOR</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QComboBox" name="comboResult">
@@ -503,6 +542,11 @@
         <width>161</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QLabel" name="label_11">
@@ -516,13 +560,39 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT only support decimal numbers)</string>
+       <string>(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT don't support floating-point decimals)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnLshift">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>430</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LSHIFT</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnRshift">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>430</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RSHIFT</string>
       </property>
      </widget>
     </widget>
