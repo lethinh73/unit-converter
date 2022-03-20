@@ -232,7 +232,8 @@ class Ui_MainWindow(object):
         self.btnConvert.setText(_translate("MainWindow", "CONVERT"))
         self.txtError.setText(_translate("MainWindow", "TextLabel"))
         self.label_12.setText(_translate("MainWindow", "Number:"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConvert), _translate("MainWindow", "Converter"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tabConvert), _translate("MainWindow", "Converter"))
         self.label_2.setText(_translate("MainWindow", "Number 1:"))
         self.label_3.setText(_translate("MainWindow", "Number 2:"))
         self.btnAdd.setText(_translate("MainWindow", "ADD"))
@@ -246,12 +247,16 @@ class Ui_MainWindow(object):
         self.btnNot.setText(_translate("MainWindow", "NOT"))
         self.label_4.setText(_translate("MainWindow", "Result:"))
         self.label_5.setText(_translate("MainWindow", "CALCULATOR"))
-        self.label_11.setText(_translate("MainWindow", "(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT don\'t support floating-point decimals)"))
+        self.label_11.setText(_translate(
+            "MainWindow", "(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT don\'t support floating-point decimals)"))
         self.btnLshift.setText(_translate("MainWindow", "LSHIFT"))
         self.btnRshift.setText(_translate("MainWindow", "RSHIFT"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabCalculate), _translate("MainWindow", "Calculator"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAbout), _translate("MainWindow", "About"))
-        self.label.setText(_translate("MainWindow", "Number Converter and Calculator"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tabCalculate), _translate("MainWindow", "Calculator"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tabAbout), _translate("MainWindow", "About"))
+        self.label.setText(_translate(
+            "MainWindow", "Number Converter and Calculator"))
 
 
 if __name__ == "__main__":
