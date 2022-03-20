@@ -5,8 +5,8 @@ from number import Number
 options = {
     0: 'Decimal',
     1: 'Binary',
-    2: 'Hex',
-    3: 'SEM',
+    2: 'Hex (8-bit)',
+    3: 'SEM (32-bit)',
 }
 
 optionNum = 0
@@ -20,6 +20,7 @@ result = Number()
 
 
 class Ui_MainWindow(object):
+    ###########################################################################
     # APP EVENT FUNCTIONS
     ###########################################################################
     # App initialization
@@ -30,6 +31,18 @@ class Ui_MainWindow(object):
         self.comboResult.addItems(options.values())
         self.comboNum.addItems(options.values())
         self.txtError.setText('')
+
+        self.txtBinary.setStyleSheet('background-color: #D3D3D3;')
+        self.txtHex.setStyleSheet('background-color: #D3D3D3;')
+        self.txtSem.setStyleSheet('background-color: #D3D3D3;')
+        self.txtDecimal.setStyleSheet('background-color: #D3D3D3;')
+        self.txtResult.setStyleSheet('background-color: #D3D3D3;')
+        self.txtBinary.setReadOnly(True)
+        self.txtHex.setReadOnly(True)
+        self.txtSem.setReadOnly(True)
+        self.txtDecimal.setReadOnly(True)
+        self.txtResult.setReadOnly(True)
+
         print('App initialized!')
 
     # ComboBox 'Number' changed
@@ -69,6 +82,10 @@ class Ui_MainWindow(object):
                 self.txtDecimal.setText(str(num.get_float()))
         except Exception as e:
             self.txtError.setText('Error! Please enter a valid number.')
+            self.txtBinary.setText('')
+            self.txtHex.setText('')
+            self.txtSem.setText('')
+            self.txtDecimal.setText('')
             print(e)
 
     # ComboBox 'Number 1' changed
@@ -253,7 +270,7 @@ class Ui_MainWindow(object):
             print(e)
 
     # Button 'Left Shift' clicked
-    def btnLeftShiftClicked(self):
+    def btnLshiftClicked(self):
         global result, num1, num2
         try:
             self.inputNum1()
@@ -267,7 +284,7 @@ class Ui_MainWindow(object):
             print(e)
 
     # Button 'Right Shift' clicked
-    def btnRightShiftClicked(self):
+    def btnRshiftClicked(self):
         global result, num1, num2
         try:
             self.inputNum1()
@@ -280,10 +297,37 @@ class Ui_MainWindow(object):
             self.txtResult.setText('Error! Please enter a valid number.')
             print(e)
 
-    ###########################################################################
+    # Button 'LSHIFT' clicked
+    def btnLShiftClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
 
-    # GENERATED GUI CODES
-    ###########################################################################
+            result = num1 << num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+    # Button 'RSHIFT' clicked
+    def btnRShiftClicked(self):
+        global result, num1, num2
+        try:
+            self.inputNum1()
+            self.inputNum2()
+
+            result = num1 >> num2
+
+            self.outputResult()
+        except Exception as e:
+            self.txtResult.setText('Error! Please enter a valid number.')
+            print(e)
+
+###########################################################################
+# GENERATED GUI CODES
+###########################################################################
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -494,26 +538,48 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        # APP EVENT LISTENERS
-        ###########################################################################
+###########################################################################
+# APP EVENT LISTENERS
+###########################################################################
+        # Initialize the app
         self.init()
+        # Button "Convert" clicked
         self.btnConvert.clicked.connect(self.btnConvertClicked)
+        # ComboBox Number base changed
         self.comboNum.currentIndexChanged.connect(self.comboNumChanged)
-
+        # ComboBox Number 1 base changed
         self.comboNum1.currentIndexChanged.connect(self.comboNum1Changed)
+        # ComboBox Number 2 base changed
         self.comboNum2.currentIndexChanged.connect(self.comboNum2Changed)
+        # ComboBox Result base changed
         self.comboResult.currentIndexChanged.connect(
             self.comboResultChanged)
+        # Button "ADD" clicked
         self.btnAdd.clicked.connect(self.btnAddClicked)
+        # Button "SUBTRACT" clicked
         self.btnSub.clicked.connect(self.btnSubClicked)
+        # Button "MULTIPLY" clicked
         self.btnMul.clicked.connect(self.btnMulClicked)
+        # Button "DIVIDE" clicked
         self.btnDiv.clicked.connect(self.btnDivClicked)
+        # Button "AND" clicked
         self.btnAnd.clicked.connect(self.btnAndClicked)
+        # Button "OR" clicked
         self.btnOr.clicked.connect(self.btnOrClicked)
+        # Button "XOR" clicked
         self.btnXor.clicked.connect(self.btnXorClicked)
+        # Button "NOR" clicked
         self.btnNor.clicked.connect(self.btnNorClicked)
+        # Button "NOT" clicked
         self.btnNot.clicked.connect(self.btnNotClicked)
-        ###########################################################################
+        # Button "LSHIFT" clicked
+        self.btnLshift.clicked.connect(self.btnLshiftClicked)
+        # Button "RSHIFT" clicked
+        self.btnRshift.clicked.connect(self.btnRshiftClicked)
+
+###########################################################################
+# APP RETRANSLATION (GUI CODE GENERATED)
+###########################################################################
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -551,9 +617,11 @@ class Ui_MainWindow(object):
             self.tabAbout), _translate("MainWindow", "About"))
         self.label.setText(_translate(
             "MainWindow", "Number Converter and Calculator"))
-    ###########################################################################
 
 
+###########################################################################
+# MAIN FUCNTION (APP START FROM HERE)
+###########################################################################
 # Main Function
 if __name__ == '__main__':
     import sys
