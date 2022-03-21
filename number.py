@@ -68,7 +68,7 @@ class Number:
 
         if(abs(num) < 0.00001):
             print('Number is too small')
-            return '0'
+            return '0 (Too small)'
 
         if('.' in str(num)):
             dec = int(str(num).split('.')[0])
