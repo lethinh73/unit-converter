@@ -26,8 +26,8 @@ class Ui_MainWindow(object):
     # App initialization
     def init(self):
         print('App initializing...')
-        
 
+        MainWindow.setWindowIcon(QtGui.QIcon('icon.ico'))
         self.comboNum1.addItems(options.values())
         self.comboNum2.addItems(options.values())
         self.comboResult.addItems(options.values())
@@ -60,11 +60,13 @@ class Ui_MainWindow(object):
     def comboNumChanged(self):
         global optionNum
         optionNum = self.comboNum.currentIndex()
+        print('Format option changed to: ', options[optionNum])
 
     # Button 'Convert' clicked
     def btnConvertClicked(self):
         global num
         self.txtError.setText('')
+        print(f'Button Convert clicked with {options[optionNum]} option')
 
         try:
             if optionNum == 0:
@@ -97,22 +99,26 @@ class Ui_MainWindow(object):
             self.txtHex.setText('')
             self.txtSem.setText('')
             self.txtDecimal.setText('')
-            print(e)
+            print('Error: ', e)
 
     # ComboBox 'Number 1' changed
     def comboNum1Changed(self):
         global optionNum1
         optionNum1 = self.comboNum1.currentIndex()
+        print('Format option for Number 1 changed to: ', options[optionNum1])
+
 
     # ComboBox 'Number 2' changed
     def comboNum2Changed(self):
         global optionNum2
         optionNum2 = self.comboNum2.currentIndex()
+        print('Format option for Number 2 changed to: ', options[optionNum2])
 
     # ComboBox 'Result' changed
     def comboResultChanged(self):
         global optionResult
         optionResult = self.comboResult.currentIndex()
+        print('Format option for Result changed to: ', options[optionResult])
 
         if(self.txtResult.text() != ''):
             self.outputResult()
@@ -120,6 +126,7 @@ class Ui_MainWindow(object):
     # Input number 1
     def inputNum1(self):
         global num1, optionNum1
+        print('Input number 1, with format: ', options[optionNum1])
         if optionNum1 == 0:
             num1.set_from_float(float(self.txtNum1.text()))
         elif optionNum1 == 1:
@@ -132,6 +139,7 @@ class Ui_MainWindow(object):
     # Input number 2
     def inputNum2(self):
         global num2, optionNum2
+        print('Input number 2, with format: ', options[optionNum2])
         if optionNum2 == 0:
             num2.set_from_float(float(self.txtNum2.text()))
         elif optionNum2 == 1:
@@ -144,6 +152,7 @@ class Ui_MainWindow(object):
     # Output result
     def outputResult(self):
         global result, optionResult
+        print('Output result, with format: ', options[optionResult])
         if optionResult == 0:
             self.txtResult.setText(str(result.get_float()))
         elif optionResult == 1:
@@ -156,6 +165,7 @@ class Ui_MainWindow(object):
     # Button 'Add' clicked
     def btnAddClicked(self):
         global result, num1, num2
+        print('Button Add clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -165,11 +175,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'Subtract' clicked
     def btnSubClicked(self):
         global result, num1, num2
+        print('Button Subtract clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -179,11 +190,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'Multiply' clicked
     def btnMulClicked(self):
         global result, num1, num2
+        print('Button Multiply clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -193,11 +205,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'Divide' clicked
     def btnDivClicked(self):
         global result, num1, num2
+        print('Button Divide clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -207,11 +220,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'AND' clicked
     def btnAndClicked(self):
         global result, num1, num2
+        print('Button AND clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -221,11 +235,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'OR' clicked
     def btnOrClicked(self):
         global result, num1, num2
+        print('Button OR clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -235,11 +250,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'XOR' clicked
     def btnXorClicked(self):
         global result, num1, num2
+        print('Button XOR clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -249,11 +265,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'NOT' clicked
     def btnNotClicked(self):
         global result, num1
+        print('Button NOT clicked')
         try:
             self.inputNum1()
 
@@ -264,11 +281,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'NOR' clicked
     def btnNorClicked(self):
         global result, num1, num2
+        print('Button NOR clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -278,11 +296,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'Left Shift' clicked
     def btnLshiftClicked(self):
         global result, num1, num2
+        print('Button Left Shift clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -292,11 +311,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'Right Shift' clicked
     def btnRshiftClicked(self):
         global result, num1, num2
+        print('Button Right Shift clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -306,11 +326,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'LSHIFT' clicked
     def btnLShiftClicked(self):
         global result, num1, num2
+        print('Button LSHIFT clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -320,11 +341,12 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
     # Button 'RSHIFT' clicked
     def btnRShiftClicked(self):
         global result, num1, num2
+        print('Button RSHIFT clicked')
         try:
             self.inputNum1()
             self.inputNum2()
@@ -334,7 +356,7 @@ class Ui_MainWindow(object):
             self.outputResult()
         except Exception as e:
             self.txtResult.setText('Error! Please enter a valid number.')
-            print(e)
+            print('Error: ', e)
 
 ###########################################################################
 # GENERATED GUI CODES
