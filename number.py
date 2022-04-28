@@ -88,3 +88,5 @@ class Number:
     def __rshift__(self, other):
         print('RSHIFT between: ', self.get_float(), ' and ', other.get_float())
         return Number(int(self.get_float()) >> int(other.get_float()))
+
+        
