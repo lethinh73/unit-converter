@@ -1,6 +1,9 @@
 import struct
 
-
+###########################################################################
+# CLASS NUMBER
+# This class is used to store and manipulate numbers.
+###########################################################################
 class Number:
     # Constructor, convert number to float format
     def __init__(self, num=0):

@@ -1,18 +1,23 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from number import Number
 
-# Global variables
+###########################################################################
+# GLOBAL VARIABLES
+###########################################################################
+# Options for the combo boxes
 options = {
     0: 'Decimal',
     1: 'Binary (32-bit)',
     2: 'Hex'
 }
 
+# Reset options for the combo boxes
 optionNum = 0
 optionNum1 = 0
 optionNum2 = 0
 optionResult = 0
 
+# Initialize the variables
 num = Number()
 num1 = Number()
 num2 = Number()
