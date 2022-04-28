@@ -5,7 +5,7 @@ from number import Number
 options = {
     0: 'Decimal',
     1: 'Binary (32-bit)',
-    2: 'Hex (8-bit)'
+    2: 'Hex'
 }
 
 optionNum = 0
@@ -119,6 +119,13 @@ class Ui_MainWindow(object):
         optionNum1 = self.comboNum1.currentIndex()
         print('Format option for Number 1 changed to: ', options[optionNum1])
 
+    # Button 'CLEAR' for number 1 clicked
+    def btnClear1Clicked(self):
+        self.txtNum1.setText('')
+    
+    # Button 'CLEAR' for number 2 clicked
+    def btnClear2Clicked(self):
+        self.txtNum2.setText('')
 
     # ComboBox 'Number 2' changed
     def comboNum2Changed(self):
@@ -142,11 +149,9 @@ class Ui_MainWindow(object):
         if optionNum1 == 0:
             num1.set_from_float(float(self.txtNum1.text()))
         elif optionNum1 == 1:
-            num1.set_from_binary(self.txtNum1.text())
+            num1.set_from_bin(self.txtNum1.text())
         elif optionNum1 == 2:
             num1.set_from_hex(self.txtNum1.text())
-        elif optionNum1 == 3:
-            num1.set_from_sem(self.txtNum1.text())
 
     # Input number 2
     def inputNum2(self):
@@ -155,11 +160,9 @@ class Ui_MainWindow(object):
         if optionNum2 == 0:
             num2.set_from_float(float(self.txtNum2.text()))
         elif optionNum2 == 1:
-            num2.set_from_binary(self.txtNum2.text())
+            num2.set_from_bin(self.txtNum2.text())
         elif optionNum2 == 2:
             num2.set_from_hex(self.txtNum2.text())
-        elif optionNum2 == 3:
-            num2.set_from_sem(self.txtNum2.text())
 
     # Output result
     def outputResult(self):
@@ -168,11 +171,9 @@ class Ui_MainWindow(object):
         if optionResult == 0:
             self.txtResult.setText(str(result.get_float()))
         elif optionResult == 1:
-            self.txtResult.setText(str(result.get_binary()))
+            self.txtResult.setText(str(result.get_bin()))
         elif optionResult == 2:
             self.txtResult.setText(str(result.get_hex()))
-        elif optionResult == 3:
-            self.txtResult.setText(str(result.get_sem()))
 
     # Button 'Add' clicked
     def btnAddClicked(self):
@@ -371,7 +372,7 @@ class Ui_MainWindow(object):
             print('Error: ', e)
 
 ###########################################################################
-# GENERATED GUI CODES
+# CREATE GUI CODES (GENERATED FROM PyQt5 UI FILE)
 ###########################################################################
 
     def setupUi(self, MainWindow):
@@ -645,9 +646,13 @@ class Ui_MainWindow(object):
         self.btnLshift.clicked.connect(self.btnLshiftClicked)
         # Button "RSHIFT" clicked
         self.btnRshift.clicked.connect(self.btnRshiftClicked)
+        # Button "CLEAR" for number1 clicked
+        self.btnClear1.clicked.connect(self.btnClear1Clicked)
+        # Button "CLEAR" for number2 clicked
+        self.btnClear2.clicked.connect(self.btnClear2Clicked)
 
 ###########################################################################
-# APP RETRANSLATION (GUI CODE GENERATED)
+# APP RETRANSLATION (GENERATED FROM PyQt5 UI FILE)
 ###########################################################################
 
     def retranslateUi(self, MainWindow):

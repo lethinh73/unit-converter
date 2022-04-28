@@ -24,7 +24,7 @@ class Number:
     # Get binary string
     def get_bin(self):
         result = bin(struct.unpack('>I', self.num)[0]).replace('0b', '').zfill(32)
-        print('Export SEM: ', result)
+        print('Export binary: ', result)
         return result
 
     # Get float value
