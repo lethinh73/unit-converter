@@ -4,15 +4,15 @@ from number import Number
 # Global variables
 options = {
     0: 'Decimal',
-    1: 'Binary',
-    2: 'Hex (8-bit)',
-    3: 'SEM (32-bit)',
+    1: 'Binary (32-bit)',
+    2: 'Hex (8-bit)'
 }
 
 optionNum = 0
 optionNum1 = 0
 optionNum2 = 0
 optionResult = 0
+
 num = Number()
 num1 = Number()
 num2 = Number()
@@ -27,6 +27,7 @@ class Ui_MainWindow(object):
     def init(self):
         print('App initializing...')
 
+        # Add options to option boxes:
         MainWindow.setWindowIcon(QtGui.QIcon('icon.ico'))
         self.comboNum1.addItems(options.values())
         self.comboNum2.addItems(options.values())
@@ -34,19 +35,28 @@ class Ui_MainWindow(object):
         self.comboNum.addItems(options.values())
         self.txtError.setText('')
 
+        # Change color of output to gray
         self.txtBinary.setStyleSheet('background-color: #D3D3D3;')
         self.txtHex.setStyleSheet('background-color: #D3D3D3;')
-        self.txtSem.setStyleSheet('background-color: #D3D3D3;')
+        self.txtSem1.setStyleSheet('background-color: #D3D3D3;')
+        self.txtSem2.setStyleSheet('background-color: #D3D3D3;')
+        self.txtSem3.setStyleSheet('background-color: #D3D3D3;')
         self.txtDecimal.setStyleSheet('background-color: #D3D3D3;')
         self.txtResult.setStyleSheet('background-color: #D3D3D3;')
+
+        # Set ouput textbox to 'read-only'
         self.txtBinary.setReadOnly(True)
         self.txtHex.setReadOnly(True)
-        self.txtSem.setReadOnly(True)
+        self.txtSem1.setReadOnly(True)
+        self.txtSem2.setReadOnly(True)
+        self.txtSem3.setReadOnly(True)
         self.txtDecimal.setReadOnly(True)
         self.txtResult.setReadOnly(True)
 
+        # Set default tab when openning to 'Converter'
         self.tabWidget.setCurrentIndex(0)
 
+        # Set fonts for option boxes
         font = QtGui.QFont()
         font.setPointSize(12)
         self.comboNum.setFont(font)
@@ -83,12 +93,6 @@ class Ui_MainWindow(object):
                 self.txtDecimal.setText(str(num.get_float()))
             elif optionNum == 2:
                 num.set_from_hex(self.txtNum.text())
-                self.txtBinary.setText(str(num.get_binary()))
-                self.txtHex.setText(str(num.get_hex()))
-                self.txtSem.setText(str(num.get_sem()))
-                self.txtDecimal.setText(str(num.get_float()))
-            elif optionNum == 3:
-                num.set_from_sem(self.txtNum.text())
                 self.txtBinary.setText(str(num.get_binary()))
                 self.txtHex.setText(str(num.get_hex()))
                 self.txtSem.setText(str(num.get_sem()))
@@ -412,12 +416,13 @@ class Ui_MainWindow(object):
         font.setPointSize(15)
         self.txtBinary.setFont(font)
         self.txtBinary.setObjectName("txtBinary")
-        self.txtSem = QtWidgets.QLineEdit(self.tabConvert)
-        self.txtSem.setGeometry(QtCore.QRect(280, 320, 365, 25))
+        self.txtSem1 = QtWidgets.QLineEdit(self.tabConvert)
+        self.txtSem1.setGeometry(QtCore.QRect(280, 320, 21, 25))
         font = QtGui.QFont()
         font.setPointSize(15)
-        self.txtSem.setFont(font)
-        self.txtSem.setObjectName("txtSem")
+        self.txtSem1.setFont(font)
+        self.txtSem1.setText("")
+        self.txtSem1.setObjectName("txtSem1")
         self.txtHex = QtWidgets.QLineEdit(self.tabConvert)
         self.txtHex.setGeometry(QtCore.QRect(280, 390, 365, 25))
         font = QtGui.QFont()
@@ -454,6 +459,32 @@ class Ui_MainWindow(object):
         self.label_13 = QtWidgets.QLabel(self.tabConvert)
         self.label_13.setGeometry(QtCore.QRect(490, 70, 75, 20))
         self.label_13.setObjectName("label_13")
+        self.txtSem2 = QtWidgets.QLineEdit(self.tabConvert)
+        self.txtSem2.setGeometry(QtCore.QRect(330, 320, 101, 25))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.txtSem2.setFont(font)
+        self.txtSem2.setText("")
+        self.txtSem2.setObjectName("txtSem2")
+        self.txtSem3 = QtWidgets.QLineEdit(self.tabConvert)
+        self.txtSem3.setGeometry(QtCore.QRect(460, 320, 261, 25))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.txtSem3.setFont(font)
+        self.txtSem3.setText("")
+        self.txtSem3.setObjectName("txtSem3")
+        self.label_11 = QtWidgets.QLabel(self.tabConvert)
+        self.label_11.setGeometry(QtCore.QRect(270, 350, 41, 20))
+        self.label_11.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_11.setObjectName("label_11")
+        self.label_14 = QtWidgets.QLabel(self.tabConvert)
+        self.label_14.setGeometry(QtCore.QRect(330, 350, 101, 20))
+        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_14.setObjectName("label_14")
+        self.label_15 = QtWidgets.QLabel(self.tabConvert)
+        self.label_15.setGeometry(QtCore.QRect(460, 350, 261, 20))
+        self.label_15.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_15.setObjectName("label_15")
         self.tabWidget.addTab(self.tabConvert, "")
         self.tabCalculate = QtWidgets.QWidget()
         self.tabCalculate.setObjectName("tabCalculate")
@@ -542,20 +573,18 @@ class Ui_MainWindow(object):
         font.setPointSize(15)
         self.comboResult.setFont(font)
         self.comboResult.setObjectName("comboResult")
-        self.label_11 = QtWidgets.QLabel(self.tabCalculate)
-        self.label_11.setGeometry(QtCore.QRect(50, 475, 700, 30))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_11.setFont(font)
-        self.label_11.setObjectName("label_11")
         self.btnLshift = QtWidgets.QPushButton(self.tabCalculate)
-        self.btnLshift.setGeometry(QtCore.QRect(220, 430, 150, 30))
+        self.btnLshift.setGeometry(QtCore.QRect(120, 430, 150, 30))
         self.btnLshift.setObjectName("btnLshift")
         self.btnRshift = QtWidgets.QPushButton(self.tabCalculate)
-        self.btnRshift.setGeometry(QtCore.QRect(430, 430, 150, 30))
+        self.btnRshift.setGeometry(QtCore.QRect(325, 430, 150, 30))
         self.btnRshift.setObjectName("btnRshift")
+        self.btnClear1 = QtWidgets.QPushButton(self.tabCalculate)
+        self.btnClear1.setGeometry(QtCore.QRect(520, 120, 161, 30))
+        self.btnClear1.setObjectName("btnClear1")
+        self.btnClear2 = QtWidgets.QPushButton(self.tabCalculate)
+        self.btnClear2.setGeometry(QtCore.QRect(520, 190, 161, 30))
+        self.btnClear2.setObjectName("btnClear2")
         self.tabWidget.addTab(self.tabCalculate, "")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(100, 5, 600, 100))
@@ -622,9 +651,12 @@ class Ui_MainWindow(object):
         self.label_9.setText(_translate("MainWindow", "SEM:"))
         self.label_10.setText(_translate("MainWindow", "Hex:"))
         self.btnConvert.setText(_translate("MainWindow", "CONVERT"))
-        self.txtError.setText(_translate("MainWindow", "TextLabel"))
+        self.txtError.setText(_translate("MainWindow", "Error Messages!"))
         self.label_12.setText(_translate("MainWindow", "Number:"))
         self.label_13.setText(_translate("MainWindow", "Format:"))
+        self.label_11.setText(_translate("MainWindow", "Sign"))
+        self.label_14.setText(_translate("MainWindow", "Exponent"))
+        self.label_15.setText(_translate("MainWindow", "Mantissa"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConvert), _translate("MainWindow", "Converter"))
         self.label_2.setText(_translate("MainWindow", "Number 1:"))
         self.label_3.setText(_translate("MainWindow", "Number 2:"))
@@ -639,12 +671,12 @@ class Ui_MainWindow(object):
         self.btnNot.setText(_translate("MainWindow", "NOT"))
         self.label_4.setText(_translate("MainWindow", "Result:"))
         self.label_5.setText(_translate("MainWindow", "CALCULATOR"))
-        self.label_11.setText(_translate("MainWindow", "(OR, AND, NOT, NOR, XOR, LSHIFT, RSHIFT don\'t support floating-point decimals)"))
         self.btnLshift.setText(_translate("MainWindow", "LSHIFT"))
         self.btnRshift.setText(_translate("MainWindow", "RSHIFT"))
+        self.btnClear1.setText(_translate("MainWindow", "CLEAR"))
+        self.btnClear2.setText(_translate("MainWindow", "CLEAR"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabCalculate), _translate("MainWindow", "Calculator"))
         self.label.setText(_translate("MainWindow", "Number Converter and Calculator"))
-
 
 ###########################################################################
 # MAIN FUCNTION (APP START FROM HERE)
