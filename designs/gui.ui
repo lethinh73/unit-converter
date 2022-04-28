@@ -130,12 +130,12 @@
        </font>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txtSem">
+     <widget class="QLineEdit" name="txtSem1">
       <property name="geometry">
        <rect>
         <x>280</x>
         <y>320</y>
-        <width>365</width>
+        <width>21</width>
         <height>25</height>
        </rect>
       </property>
@@ -143,6 +143,9 @@
        <font>
         <pointsize>15</pointsize>
        </font>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <widget class="QLineEdit" name="txtHex">
@@ -242,7 +245,7 @@
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Error Messages!</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -272,6 +275,42 @@
       </property>
       <property name="text">
        <string>Format:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtSem2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>320</y>
+        <width>101</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtSem3">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>320</y>
+        <width>261</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -579,7 +618,7 @@
      <widget class="QPushButton" name="btnLshift">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>120</x>
         <y>430</y>
         <width>150</width>
         <height>30</height>
@@ -592,7 +631,7 @@
      <widget class="QPushButton" name="btnRshift">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>325</x>
         <y>430</y>
         <width>150</width>
         <height>30</height>
