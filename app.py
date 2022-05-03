@@ -127,7 +127,7 @@ class Ui_MainWindow(object):
     # Button 'CLEAR' for number 1 clicked
     def btnClear1Clicked(self):
         self.txtNum1.setText('')
-    
+
     # Button 'CLEAR' for number 2 clicked
     def btnClear2Clicked(self):
         self.txtNum2.setText('')
@@ -675,7 +675,8 @@ class Ui_MainWindow(object):
         self.label_11.setText(_translate("MainWindow", "Sign"))
         self.label_14.setText(_translate("MainWindow", "Exponent"))
         self.label_15.setText(_translate("MainWindow", "Mantissa"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConvert), _translate("MainWindow", "Converter"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tabConvert), _translate("MainWindow", "Converter"))
         self.label_2.setText(_translate("MainWindow", "Number 1:"))
         self.label_3.setText(_translate("MainWindow", "Number 2:"))
         self.btnAdd.setText(_translate("MainWindow", "ADD"))
@@ -693,8 +694,11 @@ class Ui_MainWindow(object):
         self.btnRshift.setText(_translate("MainWindow", "RSHIFT"))
         self.btnClear1.setText(_translate("MainWindow", "CLEAR"))
         self.btnClear2.setText(_translate("MainWindow", "CLEAR"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabCalculate), _translate("MainWindow", "Calculator"))
-        self.label.setText(_translate("MainWindow", "Number Converter and Calculator"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tabCalculate), _translate("MainWindow", "Calculator"))
+        self.label.setText(_translate(
+            "MainWindow", "Number Converter and Calculator"))
+
 
 ###########################################################################
 # MAIN FUCNTION (APP START FROM HERE)
