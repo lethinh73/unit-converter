@@ -2,6 +2,10 @@
 
 This is a University Software Engineering course project that combines a number converter and a calculator, supporting **Decimal**, **Binary (32-bit)**, and **Hexadecimal** formats.
 
+<img width="831" alt="Screenshot 2025-05-23 at 11 18 51 PM" src="https://github.com/user-attachments/assets/c01f7707-0afa-48d0-990d-805b1880d1b3" />
+<img width="824" alt="Screenshot 2025-05-23 at 11 19 15 PM" src="https://github.com/user-attachments/assets/d88926dc-83de-4e65-aab6-d14da56d5df7" />
+
+
 ---
 
 ## Team Members
